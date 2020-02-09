@@ -1,3 +1,4 @@
+grafana_node_dashboards_cpu_metric_name: node_cpu_seconds_total
 grafana_node_dashboards_grafonnet:
   - file_name: node_cpu
     dashboard_name: CPU
@@ -6,7 +7,7 @@ grafana_node_dashboards_grafonnet:
       - hosts
     templates:
       - name: "instance"
-        query: "label_values(node_cpu_seconds_total, instance)"
+        query: "label_values({{ grafana_node_dashboards_cpu_metric_name }}, instance)"
         label: "Instance"
         includeAll: "false"
     panels:
@@ -23,7 +24,7 @@ grafana_node_dashboards_grafonnet:
         min: 0
         max: "105"
         targets:
-          - expr: '(avg by (mode)(irate(node_cpu_seconds_total{instance="$instance"}[5m])))*100'
+          - expr: '(avg by (mode)(irate({{ grafana_node_dashboards_cpu_metric_name }}{instance="$instance"}[5m])))*100'
             legend_format: !unsafe "{{mode}}"
   - file_name: node_memory
     dashboard_name: Memory
