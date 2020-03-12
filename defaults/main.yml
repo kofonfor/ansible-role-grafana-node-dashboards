@@ -176,7 +176,7 @@ grafana_node_dashboards_grafonnet:
     panels:
       - name: "Block I/O sizes on ($instance, $device)"
         type: "heatmap"
-        card_color: "#fcf82d"
+        card_color: "#f5495c"
         format: "decbytes"
         decimals: "1"
         gridpos_x: 0
